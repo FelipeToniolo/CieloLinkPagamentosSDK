@@ -1,4 +1,4 @@
-package br.com.cielo.librarycielolinkpagamentos.models
+package br.com.cielo.librarycielolinkpagamentos
 
 interface CieloPaymentsLinkCallbacks {
     fun onGetLink(link: String)
