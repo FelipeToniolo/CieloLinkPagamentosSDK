@@ -36,22 +36,22 @@ class KotlinMainActivity : AppCompatActivity() {
         paymentsLink.generateLink(parameters, object :
             CieloPaymentsLinkCallbacks {
             override fun onGetLink(link: String) {
-                txt1.text = link
+                txt1kotlin.text = link
             }
 
             override fun onError(error: String) {
-                txt1.text = "Deu pau $error"
+                txt1kotlin.text = "Deu pau $error"
             }
         })
 
         paymentsLink.generateLink(parameters2, object :
             CieloPaymentsLinkCallbacks {
             override fun onGetLink(link: String) {
-                txt2.text = link
+                txt2kotlin.text = link
             }
 
             override fun onError(error: String) {
-                txt2.text = "Deu pau $error"
+                txt2kotlin.text = "Deu pau $error"
             }
         })
 
