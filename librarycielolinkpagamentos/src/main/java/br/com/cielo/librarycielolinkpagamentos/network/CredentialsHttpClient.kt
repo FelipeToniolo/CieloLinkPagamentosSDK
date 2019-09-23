@@ -1,5 +1,11 @@
-package br.com.cielo.librarycielolinkpagamentos
+package br.com.cielo.librarycielolinkpagamentos.network
 
+import br.com.cielo.librarycielolinkpagamentos.BuildConfig
+import br.com.cielo.librarycielolinkpagamentos.service.Environment
+import br.com.cielo.librarycielolinkpagamentos.extension.toStatusCode
+import br.com.cielo.librarycielolinkpagamentos.models.oauth.AccessToken
+import br.com.cielo.librarycielolinkpagamentos.models.oauth.AuthClientModel
+import br.com.cielo.librarycielolinkpagamentos.models.oauth.OAuthApi
 import okhttp3.Credentials
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,7 +36,13 @@ class CredentialsHttpClient(
             override fun onResponse(call: Call<AuthClientModel>, response: Response<AuthClientModel>) {
                 if (response.isSuccessful) {
                     response.body()?.apply {
-                        onSuccessCallback(AccessToken(accessToken, expiresIn, Calendar.getInstance().time))
+                        onSuccessCallback(
+                            AccessToken(
+                                accessToken,
+                                expiresIn,
+                                Calendar.getInstance().time
+                            )
+                        )
                     }
                     if (response.body() == null)
                         onError.invoke("The response object is null.")

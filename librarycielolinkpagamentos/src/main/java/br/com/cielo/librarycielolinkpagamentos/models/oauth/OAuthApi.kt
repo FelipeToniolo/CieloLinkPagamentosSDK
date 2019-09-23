@@ -1,5 +1,6 @@
-package br.com.cielo.librarycielolinkpagamentos
+package br.com.cielo.librarycielolinkpagamentos.models.oauth
 
+import br.com.cielo.librarycielolinkpagamentos.models.oauth.AuthClientModel
 import retrofit2.Call
 import retrofit2.http.*
 

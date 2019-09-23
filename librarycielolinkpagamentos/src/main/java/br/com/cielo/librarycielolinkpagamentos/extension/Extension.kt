@@ -1,4 +1,4 @@
-package br.com.cielo.librarycielolinkpagamentos
+package br.com.cielo.librarycielolinkpagamentos.extension
 
 fun Int.toStatusCode(): HttpStatusCode = when (this) {
     200 -> HttpStatusCode.Ok

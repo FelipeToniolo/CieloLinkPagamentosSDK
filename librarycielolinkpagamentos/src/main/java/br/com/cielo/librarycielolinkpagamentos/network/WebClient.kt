@@ -1,4 +1,4 @@
-package br.com.cielo.librarycielolinkpagamentos
+package br.com.cielo.librarycielolinkpagamentos.network
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

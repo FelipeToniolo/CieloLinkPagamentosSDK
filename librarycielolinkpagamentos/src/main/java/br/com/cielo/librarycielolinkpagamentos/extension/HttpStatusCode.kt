@@ -1,4 +1,4 @@
-package br.com.cielo.librarycielolinkpagamentos
+package br.com.cielo.librarycielolinkpagamentos.extension
 
 enum class HttpStatusCode(val code: Int) {
     Ok(200),
