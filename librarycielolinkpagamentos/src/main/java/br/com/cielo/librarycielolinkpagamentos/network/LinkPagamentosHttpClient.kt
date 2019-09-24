@@ -14,7 +14,7 @@ class LinkPagamentosHttpClient(private val environment: Environment) {
 
     fun getLink(
         model: Transaction, token: String,
-        onGetLinkCallback: (String) -> Unit,
+        onGetLinkCallback: (Transaction) -> Unit,
         onErrorCallback: (String) -> Unit
     ) {
 
@@ -31,11 +31,11 @@ class LinkPagamentosHttpClient(private val environment: Environment) {
             }
 
             override fun onResponse(call: Call<Transaction>, response: Response<Transaction>) {
-                val shortUrl = response.body()?.shortUrl
-                shortUrl?.let {
+                val transaction = response.body()
+                transaction?.let {
                     onGetLinkCallback.invoke(it)
                 }
-                if (shortUrl.isNullOrBlank()) {
+                if (transaction ==null) {
                     onErrorCallback.invoke("error ${response.code()} ${response.code().toStatusCode()}")
                 }
             }

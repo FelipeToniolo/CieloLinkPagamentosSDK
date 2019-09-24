@@ -6,6 +6,7 @@ import br.com.cielo.librarycielolinkpagamentos.CieloPaymentsLinkCallbacks
 import br.com.cielo.librarycielolinkpagamentos.CieloPaymentsLinkClient
 import br.com.cielo.librarycielolinkpagamentos.models.paymentlink.CieloPaymentsLinkParameters
 import br.com.cielo.librarycielolinkpagamentos.models.paymentlink.SaleType
+import br.com.cielo.librarycielolinkpagamentos.models.paymentlink.Transaction
 import br.com.cielo.librarycielolinkpagamentos.service.Environment
 import com.cielo.cielopaymentlinkclient.models.paymentlink.recurrent.RecurrentInterval
 import com.cielo.cielopaymentlinkclient.models.paymentlink.shipping.ShippingType
@@ -18,7 +19,7 @@ class KotlinMainActivity : AppCompatActivity() {
         setContentView(R.layout.kotlin_activity_main)
 
         val paymentsLink = CieloPaymentsLinkClient(
-            environment= Environment.SANDBOX,
+            environment = Environment.SANDBOX,
             clientID = "SEUCLIENTID",
             clientSecret = "SEUCLIENTSECRET"
         )
@@ -35,8 +36,8 @@ class KotlinMainActivity : AppCompatActivity() {
 
         paymentsLink.generateLink(parameters, object :
             CieloPaymentsLinkCallbacks {
-            override fun onGetLink(link: String) {
-                txt1kotlin.text = link
+            override fun onGetLink(link: Transaction) {
+                txt1kotlin.text = link.shortUrl
             }
 
             override fun onError(error: String) {
@@ -46,8 +47,8 @@ class KotlinMainActivity : AppCompatActivity() {
 
         paymentsLink.generateLink(parameters2, object :
             CieloPaymentsLinkCallbacks {
-            override fun onGetLink(link: String) {
-                txt2kotlin.text = link
+            override fun onGetLink(link: Transaction) {
+                txt2kotlin.text = link.id
             }
 
             override fun onError(error: String) {
